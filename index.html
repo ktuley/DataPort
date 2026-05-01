@@ -5,74 +5,94 @@
   <title>Balloon Pilot Docs</title>
 
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      display: flex;
-    }
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+  }
 
-    nav {
-      width: 250px;
-      background: #f4f4f4;
-      padding: 15px;
-    }
+  /* SIDEBAR */
+  nav {
+    width: 250px;
+    background: #f5f5f5;
+    padding: 15px;
+  }
 
-    nav a,
-    .menu-header {
-      display: block;
-      padding: 6px 8px;
-      margin: 2px 0;
-      text-decoration: none;
-      color: #333;
-    }
+  /* LINKS + HEADERS */
+  nav a,
+  .menu-header {
+    display: block;
+    padding: 6px 8px;
+    margin: 2px 0;
+    text-decoration: none;
+    color: #333;
+  }
 
-    nav a:hover {
-      background: #e0e0e0;
-    }
+  /* HOVER */
+  nav a:hover {
+    background: #e8e8e8;
+  }
 
-    .menu-group {
-      margin: 2px 0;
-    }
+  /* MENU GROUP */
+  .menu-group {
+    margin: 2px 0;
+  }
 
-    .menu-header {
-      display: flex;
-      justify-content: space-between;
-      cursor: pointer;
-      font-weight: bold;
-    }
+  /* HEADER (collapsible sections) */
+  .menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-weight: 600;
+    color: #222;
+  }
 
-    .submenu {
-      margin-left: 12px;
-      display: block;
-    }
+  /* SUBMENU */
+  .submenu {
+    margin-left: 12px;
+    display: block;
+  }
 
-    /* Arrow rotation */
-    .arrow {
-      font-size: 12px;
-      transition: transform 0.2s ease;
-    }
+  /* 🔽 ARROW */
+  .arrow {
+    font-size: 12px;
+    transition: transform 0.2s ease;
+  }
 
-    .menu-group.open .arrow {
-      transform: rotate(180deg);
-    }
+  /* 🔼 ROTATE WHEN OPEN */
+  .menu-group.open .arrow {
+    transform: rotate(180deg);
+  }
 
-    /* Hover */
-nav a:hover {
-  background: #e9eef7;
-}
+  /* 🔴 ACTIVE PAGE (BPDP STYLE) */
+  nav a.active {
+    background: #fbeaea;
+    border-left: 4px solid #a80000;
+    padding-left: 6px;
+  }
 
-/* Active page */
-nav a.active {
-  background: #ffe5e5;        /* light red background */
-  border-left: 4px solid #cc0000;  /* strong red accent */
-  padding-left: 6px;
-}
+  /* ACTIVE HOVER */
+  nav a.active:hover {
+    background: #f6dcdc;
+  }
 
-    main {
-      flex: 1;
-      padding: 20px;
-    }
-  </style>
+  /* OPTIONAL: highlight open section */
+  .menu-group.open .menu-header {
+    color: #a80000;
+  }
+
+  /* MAIN CONTENT */
+  main {
+    flex: 1;
+    padding: 20px;
+  }
+
+  /* PAGE TITLE */
+  h1 {
+    margin-top: 0;
+  }
+</style>
 </head>
 
 <body>
