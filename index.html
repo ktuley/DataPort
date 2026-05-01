@@ -1,62 +1,82 @@
 <!DOCTYPE html>
 <html>
 <style>
+  nav {
+    width: 250px;
+    background: #f4f4f4;
+    padding: 15px;
+  }
+
   nav a {
     display: block;
-    margin: 6px 0;
+    padding: 6px 8px;
+    margin: 2px 0;
     text-decoration: none;
     color: #333;
   }
 
-  nav div {
+  nav a:hover {
+    background: #e0e0e0;
+  }
+
+  .menu-group {
     margin-bottom: 10px;
   }
 
-  nav strong {
-    display: block;
-    margin: 8px 0;
+  .menu-header {
+    display: flex;
+    justify-content: space-between;
     cursor: pointer;
+    padding: 6px 8px;
+    font-weight: bold;
+  }
+
+  .submenu {
+    margin-left: 12px;
+    display: block;
+  }
+
+  .arrow {
+    font-size: 12px;
   }
 </style>
 <body style="margin:0; font-family: Arial; display:flex;">
 
-  <!-- NAVIGATION -->
-  <nav style="width:250px; background:#f4f4f4; padding:15px;">
+ <nav>
 
-    <a href="#" onclick="loadPage('home')">Home</a>
- 
-  <div>
-  <div onclick="toggle('bpdp')" style="cursor:pointer;">
-    What is BPDP ▾
-  </div>
+  <a href="#" onclick="loadPage('home')">Home</a>
 
-  <div id="bpdp" style="margin-left:15px;">
-    <a href="#" onclick="loadPage('what-is-bpdp/about-bpdp')">About BPDP</a>
-    <a href="#" onclick="loadPage('what-is-bpdp/about-ken')">About Ken</a>
-  </div>
-</div>
-
-</div>
+  <!-- WHAT IS BPDP -->
+  <div class="menu-group">
+    <div class="menu-header" onclick="toggle('bpdp')">
+      What is BPDP <span class="arrow">▾</span>
     </div>
-
-    <a href="#" onclick="loadPage('get-started')">Get Started</a>
-    <a href="#" onclick="loadPage('latest-news')">Latest News</a>
-    <a href="#" onclick="loadPage('participants')">Who's Participating?</a>
-    <a href="#" onclick="loadPage('reviews')">Data Port Reviews</a>
-    <a href="#" onclick="loadPage('quick-links')">Quick Links</a>
-    <a href="#" onclick="loadPage('instructions-faq')">Instructions & FAQs</a>
-
-   <div>
-  <div onclick="toggle('contact')" style="cursor:pointer;">
-    Contact Us ▾
+    <div id="bpdp" class="submenu">
+      <a href="#" onclick="loadPage('what-is-bpdp/what-is-bpdp')">Overview</a>
+      <a href="#" onclick="loadPage('what-is-bpdp/about-bpdp')">About BPDP</a>
+      <a href="#" onclick="loadPage('what-is-bpdp/about-ken')">About Ken</a>
+    </div>
   </div>
 
-  <div id="contact" style="margin-left:15px;">
-    <a href="#" onclick="loadPage('contact/contact-us')">Contact</a>
-    <a href="#" onclick="loadPage('contact/legal')">Legal</a>
+  <a href="#" onclick="loadPage('get-started')">Get Started</a>
+  <a href="#" onclick="loadPage('latest-news')">Latest News</a>
+  <a href="#" onclick="loadPage('participants')">Who's Participating?</a>
+  <a href="#" onclick="loadPage('reviews')">Data Port Reviews</a>
+  <a href="#" onclick="loadPage('quick-links')">Quick Links</a>
+  <a href="#" onclick="loadPage('instructions')">Instructions & FAQs</a>
+
+  <!-- CONTACT -->
+  <div class="menu-group">
+    <div class="menu-header" onclick="toggle('contact')">
+      Contact Us <span class="arrow">▾</span>
+    </div>
+    <div id="contact" class="submenu">
+      <a href="#" onclick="loadPage('contact-us/contact-us')">Contact</a>
+      <a href="#" onclick="loadPage('contact-us/legal')">Legal</a>
+    </div>
   </div>
-</div>
-  </nav>
+
+</nav>
 
   <!-- MAIN CONTENT -->
   <main style="flex:1; padding:20px;">
