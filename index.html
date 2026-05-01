@@ -4,39 +4,80 @@
   <meta charset="UTF-8">
   <title>Balloon Pilot Docs</title>
 </head>
-<body>
+<body style="margin:0; font-family: Arial; display:flex;">
 
-<h1 id="title"></h1>
-<div id="content"></div>
+  <!-- NAVIGATION -->
+  <nav style="width:250px; background:#f4f4f4; padding:15px;">
 
-<script>
-fetch('/content/home.md')
-  .then(response => response.text())
-  .then(text => {
-    const lines = text.split('\n');
+    <a href="#" onclick="loadPage('home')">Home</a>
 
-    let title = '';
-    let body = '';
+    <div>
+      <strong onclick="toggle('bpdp')">What is BPDP</strong>
+      <div id="bpdp" style="margin-left:15px;">
+        <a href="#" onclick="loadPage('what-is-bpdp/about-bpdp')">About BPDP</a>
+        <a href="#" onclick="loadPage('what-is-bpdp/about-ken')">About Ken</a>
+      </div>
+    </div>
 
-    let inFrontMatter = false;
+    <a href="#" onclick="loadPage('get-started')">Get Started</a>
+    <a href="#" onclick="loadPage('latest-news')">Latest News</a>
+    <a href="#" onclick="loadPage('participants')">Who's Participating?</a>
+    <a href="#" onclick="loadPage('reviews')">Data Port Reviews</a>
+    <a href="#" onclick="loadPage('quick-links')">Quick Links</a>
+    <a href="#" onclick="loadPage('instructions-faq')">Instructions & FAQs</a>
 
-    lines.forEach(line => {
-      if (line.trim() === '---') {
-        inFrontMatter = !inFrontMatter;
-        return;
-      }
+    <div>
+      <strong onclick="toggle('contact')">Contact Us</strong>
+      <div id="contact" style="margin-left:15px;">
+        <a href="#" onclick="loadPage('contact/legal')">Legal</a>
+      </div>
+    </div>
 
-      if (inFrontMatter && line.startsWith('title:')) {
-        title = line.replace('title:', '').trim().replace(/"/g, '');
-      } else if (!inFrontMatter) {
-        body += line + '\n';
-      }
-    });
+  </nav>
 
-    document.getElementById('title').innerText = title;
-    document.getElementById('content').innerText = body;
-  });
-</script>
+  <!-- MAIN CONTENT -->
+  <main style="flex:1; padding:20px;">
+    <h1 id="title"></h1>
+    <div id="content"></div>
+  </main>
+
+  <script>
+    function loadPage(page) {
+      fetch('/content/' + page + '.md')
+        .then(response => response.text())
+        .then(text => {
+          const lines = text.split('\n');
+
+          let title = '';
+          let body = '';
+          let inFrontMatter = false;
+
+          lines.forEach(line => {
+            if (line.trim() === '---') {
+              inFrontMatter = !inFrontMatter;
+              return;
+            }
+
+            if (inFrontMatter && line.startsWith('title:')) {
+              title = line.replace('title:', '').trim().replace(/"/g, '');
+            } else if (!inFrontMatter) {
+              body += line + '\n';
+            }
+          });
+
+          document.getElementById('title').innerText = title;
+          document.getElementById('content').innerText = body;
+        });
+    }
+
+    function toggle(id) {
+      const el = document.getElementById(id);
+      el.style.display = (el.style.display === 'none') ? 'block' : 'none';
+    }
+
+    // Load home page on first visit
+    loadPage('home');
+  </script>
 
 </body>
 </html>
