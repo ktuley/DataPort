@@ -176,7 +176,7 @@
           });
 
           document.getElementById('title').innerText = title;
-          document.getElementById('content').innerHTML = marked.parse(body);
+          document.getElementById('content').innerHTML = marked.parse ? marked.parse(body) : marked(body);
 
           // Active highlight
           document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
