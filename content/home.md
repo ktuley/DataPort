@@ -1,7 +1,11 @@
----
-title: "Balloon Pilot Docs"
----
+Balloon Pilot?
+Tired of sending the same pilot and balloon documents to the same events year after year, not to mention having to send them EVERY TIME you register for an event? ☹️ The Balloon Pilot Data Port is here just for you! 😀
 
-Welcome to the new Balloon Pilot Docs site.
+Rally Organizer?
 
-And this is a new line added to home.md
+Need help in collecting and reviewing all those pilot and balloon documents? Let the Balloon Pilot Data Port do it for you!
+
+Pilots
+The Balloon Pilot Data Port is your solution to LTA document management. As a pilot, you upload your documents one time and select which organizations you want to share them with. We'll send the documents to that organization for you. You'll get monthly Emails alerting you to the status of your documents, which means you'll be reminded about 60 days before any document expires, which should be plenty of time to schedule that annual, or flight review or even renew your insurance. And for pilots, this is a FREE service. Read more about the Data Port under the "What is BPDP" menu, or get your documents together and start uploading them at BPDocs.org/Data. 
+Event Organizers
+The Balloon Pilot Data Port is your solution to managing the hundreds of documents you receive from pilots participating in your event. Use your existing application and tell pilots to upload their documents to the Data Port. We'll review the documents and give you a status report on each participating pilot. If you need the documents, we can provide them. Each document will be cropped to include just the document, oriented so you don't have to turn your head to read it and renamed so you can easily identify what the document is and who it belongs to. In other words, we'll do the document vetting for you. If you want additional assistance with your application process, we can help you there as well. In fact, we can handle the entire pilot application process for you, allowing you to concentrate on the event itself. The cost to the organization is based on the level of services requested and the number of pilots participating in your event. Read more about the options available to event organizers under the "Event Organizers" menu or reach out to Ken ken@balloonpilotdocs.com to determine the level of service that's right for you, and what that might cost. We think you'll jump at the opportunity to have expert help at your fingertips at a minimal cost.
