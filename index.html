@@ -1,9 +1,23 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="UTF-8">
-  <title>Balloon Pilot Docs</title>
-</head>
+<style>
+  nav a {
+    display: block;
+    margin: 6px 0;
+    text-decoration: none;
+    color: #333;
+  }
+
+  nav div {
+    margin-bottom: 10px;
+  }
+
+  nav strong {
+    display: block;
+    margin: 8px 0;
+    cursor: pointer;
+  }
+</style>
 <body style="margin:0; font-family: Arial; display:flex;">
 
   <!-- NAVIGATION -->
@@ -12,11 +26,15 @@
     <a href="#" onclick="loadPage('home')">Home</a>
 
     <div>
-      <strong onclick="toggle('bpdp')">What is BPDP</strong>
-      <div id="bpdp" style="margin-left:15px;">
-        <a href="#" onclick="loadPage('what-is-bpdp/about-bpdp')">About BPDP</a>
-        <a href="#" onclick="loadPage('what-is-bpdp/about-ken')">About Ken</a>
-      </div>
+  <div style="display:flex; justify-content:space-between; align-items:center;">
+    <a href="#" onclick="loadPage('contact/index')">Contact Us</a>
+    <span onclick="toggle('contact')" style="cursor:pointer;">▾</span>
+  </div>
+
+  <div id="contact" style="margin-left:15px;">
+    <a href="#" onclick="loadPage('contact/legal')">Legal</a>
+  </div>
+</div>
     </div>
 
     <a href="#" onclick="loadPage('get-started')">Get Started</a>
@@ -26,12 +44,16 @@
     <a href="#" onclick="loadPage('quick-links')">Quick Links</a>
     <a href="#" onclick="loadPage('instructions-faq')">Instructions & FAQs</a>
 
-    <div>
-      <strong onclick="toggle('contact')">Contact Us</strong>
-      <div id="contact" style="margin-left:15px;">
-        <a href="#" onclick="loadPage('contact/legal')">Legal</a>
-      </div>
-    </div>
+   <div>
+  <div style="display:flex; justify-content:space-between; align-items:center;">
+    <a href="#" onclick="loadPage('contact/index')">Contact Us</a>
+    <span onclick="toggle('contact')" style="cursor:pointer;">▾</span>
+  </div>
+
+  <div id="contact" style="margin-left:15px;">
+    <a href="#" onclick="loadPage('contact/legal')">Legal</a>
+  </div>
+</div>
 
   </nav>
 
