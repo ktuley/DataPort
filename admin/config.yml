@@ -8,7 +8,7 @@ backend:
 media_folder: "images/uploads"
 public_folder: "/images/uploads"
 
-collections:
+collections:  
   - name: "pages"
     label: "Pages"
     files:
