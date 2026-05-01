@@ -98,6 +98,9 @@
   gap: 6px;
 }
 </style>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  
 </head>
 
 <body>
@@ -171,7 +174,7 @@
           });
 
           document.getElementById('title').innerText = title;
-          document.getElementById('content').innerText = body;
+          document.getElementById('content').innerHTML = marked.parse(body);
 
           // Active highlight
           document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
