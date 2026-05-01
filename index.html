@@ -56,11 +56,18 @@
       transform: rotate(180deg);
     }
 
-    /* Active link */
-    nav a.active {
-      background: #d0e3ff;
-      font-weight: bold;
-    }
+    /* Hover */
+nav a:hover {
+  background: #e9eef7;
+}
+
+/* Active page */
+nav a.active {
+  background: #dbe8ff;
+  border-left: 4px solid #4a90e2;
+  padding-left: 6px; /* compensate for border */
+  font-weight: normal; /* remove bold */
+} }
 
     main {
       flex: 1;
