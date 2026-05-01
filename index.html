@@ -1,91 +1,121 @@
 <!DOCTYPE html>
 <html>
-<style>
-  nav {
-    width: 250px;
-    background: #f4f4f4;
-    padding: 15px;
-  }
+<head>
+  <meta charset="UTF-8">
+  <title>Balloon Pilot Docs</title>
 
-  nav a,
-  .menu-header {
-    display: block;
-    padding: 6px 8px;
-    margin: 2px 0;
-    text-decoration: none;
-    color: #333;
-  }
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+    }
 
-  nav a:hover {
-    background: #e0e0e0;
-  }
+    nav {
+      width: 250px;
+      background: #f4f4f4;
+      padding: 15px;
+    }
 
-  .menu-group {
-    margin: 2px 0; /* ← match link spacing */
-  }
+    nav a,
+    .menu-header {
+      display: block;
+      padding: 6px 8px;
+      margin: 2px 0;
+      text-decoration: none;
+      color: #333;
+    }
 
-  .menu-header {
-    display: flex;
-    justify-content: space-between;
-    cursor: pointer;
-    font-weight: bold;
-  }
+    nav a:hover {
+      background: #e0e0e0;
+    }
 
-  .submenu {
-    margin-left: 12px;
-  }
+    .menu-group {
+      margin: 2px 0;
+    }
 
-  .arrow {
-    font-size: 12px;
-  }
-</style>
-<body style="margin:0; font-family: Arial; display:flex;">
+    .menu-header {
+      display: flex;
+      justify-content: space-between;
+      cursor: pointer;
+      font-weight: bold;
+    }
 
- <nav>
+    .submenu {
+      margin-left: 12px;
+      display: block;
+    }
 
-  <a href="#" onclick="loadPage('home')">Home</a>
+    /* Arrow rotation */
+    .arrow {
+      font-size: 12px;
+      transition: transform 0.2s ease;
+    }
 
-  <!-- WHAT IS BPDP -->
-  <div class="menu-group">
-    <div class="menu-header" onclick="toggle('bpdp')">
-      What is BPDP <span class="arrow">▾</span>
+    .menu-group.open .arrow {
+      transform: rotate(180deg);
+    }
+
+    /* Active link */
+    nav a.active {
+      background: #d0e3ff;
+      font-weight: bold;
+    }
+
+    main {
+      flex: 1;
+      padding: 20px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVIGATION -->
+  <nav>
+
+    <a href="#" onclick="loadPage('home', this)">Home</a>
+
+    <!-- WHAT IS BPDP -->
+    <div class="menu-group" id="group-bpdp">
+      <div class="menu-header" onclick="toggle('bpdp','group-bpdp')">
+        What is BPDP <span class="arrow">▾</span>
+      </div>
+      <div id="bpdp" class="submenu">
+        <a href="#" onclick="loadPage('what-is-bpdp/what-is-bpdp', this)">Overview</a>
+        <a href="#" onclick="loadPage('what-is-bpdp/about-bpdp', this)">About BPDP</a>
+        <a href="#" onclick="loadPage('what-is-bpdp/about-ken', this)">About Ken</a>
+      </div>
     </div>
-    <div id="bpdp" class="submenu">
-      <a href="#" onclick="loadPage('what-is-bpdp/what-is-bpdp')">What is BPDP</a>
-      <a href="#" onclick="loadPage('what-is-bpdp/about-bpdp')">About BPDP</a>
-      <a href="#" onclick="loadPage('what-is-bpdp/about-ken')">About Ken</a>
+
+    <a href="#" onclick="loadPage('get-started', this)">Get Started</a>
+    <a href="#" onclick="loadPage('latest-news', this)">Latest News</a>
+    <a href="#" onclick="loadPage('participants', this)">Who's Participating?</a>
+    <a href="#" onclick="loadPage('reviews', this)">Data Port Reviews</a>
+    <a href="#" onclick="loadPage('quick-links', this)">Quick Links</a>
+    <a href="#" onclick="loadPage('instructions', this)">Instructions & FAQs</a>
+
+    <!-- CONTACT -->
+    <div class="menu-group" id="group-contact">
+      <div class="menu-header" onclick="toggle('contact','group-contact')">
+        Contact Us <span class="arrow">▾</span>
+      </div>
+      <div id="contact" class="submenu">
+        <a href="#" onclick="loadPage('contact-us/contact-us', this)">Contact</a>
+        <a href="#" onclick="loadPage('contact-us/legal', this)">Legal</a>
+      </div>
     </div>
-  </div>
 
-  <a href="#" onclick="loadPage('get-started')">Get Started</a>
-  <a href="#" onclick="loadPage('latest-news')">Latest News</a>
-  <a href="#" onclick="loadPage('participants')">Who's Participating?</a>
-  <a href="#" onclick="loadPage('reviews')">Data Port Reviews</a>
-  <a href="#" onclick="loadPage('quick-links')">Quick Links</a>
-  <a href="#" onclick="loadPage('instructions')">Instructions</a>
-  <a href="#" onclick="loadPage('faqs')">FAQs</a>
+  </nav>
 
-  <!-- CONTACT -->
-  <div class="menu-group">
-    <div class="menu-header" onclick="toggle('contact')">
-      Contact Us <span class="arrow">▾</span>
-    </div>
-    <div id="contact" class="submenu">
-      <a href="#" onclick="loadPage('contact-us/contact-us')">Contact Us</a>
-      <a href="#" onclick="loadPage('contact-us/legal')">Legal</a>
-    </div>
-  </div>
-
-</nav>
-
-  <!-- MAIN CONTENT -->
-  <main style="flex:1; padding:20px;">
+  <!-- CONTENT -->
+  <main>
     <h1 id="title"></h1>
     <div id="content"></div>
   </main>
 
   <script>
-    function loadPage(page) {
+    function loadPage(page, el) {
       fetch('/content/' + page + '.md')
         .then(response => response.text())
         .then(text => {
@@ -110,15 +140,27 @@
 
           document.getElementById('title').innerText = title;
           document.getElementById('content').innerText = body;
+
+          // Active highlight
+          document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+          if (el) el.classList.add('active');
         });
     }
 
-    function toggle(id) {
+    function toggle(id, groupId) {
       const el = document.getElementById(id);
-      el.style.display = (el.style.display === 'none') ? 'block' : 'none';
+      const group = document.getElementById(groupId);
+
+      const isHidden = el.style.display === 'none';
+
+      el.style.display = isHidden ? 'block' : 'none';
+
+      if (group) {
+        group.classList.toggle('open', isHidden);
+      }
     }
 
-    // Load home page on first visit
+    // Load home on first visit
     loadPage('home');
   </script>
 
