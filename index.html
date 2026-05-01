@@ -5,8 +5,38 @@
   <title>Balloon Pilot Docs</title>
 </head>
 <body>
-  <h1>Balloon Pilot Docs</h1>
-  <p>Welcome to the new site.</p>
-  <p> Edited from the back side!</p>
+
+<h1 id="title"></h1>
+<div id="content"></div>
+
+<script>
+fetch('/content/home.md')
+  .then(response => response.text())
+  .then(text => {
+    const lines = text.split('\n');
+
+    let title = '';
+    let body = '';
+
+    let inFrontMatter = false;
+
+    lines.forEach(line => {
+      if (line.trim() === '---') {
+        inFrontMatter = !inFrontMatter;
+        return;
+      }
+
+      if (inFrontMatter && line.startsWith('title:')) {
+        title = line.replace('title:', '').trim().replace(/"/g, '');
+      } else if (!inFrontMatter) {
+        body += line + '\n';
+      }
+    });
+
+    document.getElementById('title').innerText = title;
+    document.getElementById('content').innerText = body;
+  });
+</script>
+
 </body>
 </html>
